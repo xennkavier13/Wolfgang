@@ -27,8 +27,7 @@ class AlbumActivity : Activity() {
         val searchBtn: ImageView = findViewById(R.id.searchBtn)
         val profileBtn: ImageView = findViewById(R.id.profileBtn)
 
-
-
+        
 
         playBtn.setOnClickListener {
             animateButton(playBtn)

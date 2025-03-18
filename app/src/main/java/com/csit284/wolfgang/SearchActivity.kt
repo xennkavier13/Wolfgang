@@ -64,6 +64,8 @@ class SearchActivity : Activity() {
         }
         profileBtn.setOnClickListener {
             setActiveNavButton(profileBtn, homeBtn, searchBtn)
+            val intent = Intent(this, ProfilePage::class.java)
+            startActivity(intent)
         }
 
     }

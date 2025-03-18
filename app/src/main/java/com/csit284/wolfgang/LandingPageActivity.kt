@@ -12,6 +12,9 @@ import android.media.Image
 import android.provider.ContactsContract.Profile
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.ListView
+import com.csit284.wolfgang.data.Album
+import com.csit284.wolfgang.helper.CustomListAdapter
 
 class LandingPageActivity : Activity() {
 
@@ -21,6 +24,33 @@ class LandingPageActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing_page)
+
+        val listview = findViewById<ListView>(R.id.listview)
+
+        val albums = listOf(
+            Album("Album 1", "Artist 1", R.drawable.album_placeholder),
+            Album("Album 2", "Artist 2", R.drawable.album_placeholder),
+            Album("Album 3", "Artist 3", R.drawable.album_placeholder),
+            Album("Album 4", "Artist 4", R.drawable.album_placeholder),
+            Album("Album 5", "Artist 5", R.drawable.album_placeholder),
+            Album("Album 6", "Artist 6", R.drawable.album_placeholder),
+            Album("Album 7", "Artist 7", R.drawable.album_placeholder),
+            Album("Album 8", "Artist 8", R.drawable.album_placeholder)
+
+        )
+
+        val adapter = CustomListAdapter(this, albums)
+        listview.adapter = adapter
+
+        listview.setOnItemClickListener { _, _, position, _ ->
+            val selectedAlbum = albums[position]
+            val intent = Intent(this, AlbumActivity::class.java).apply {
+                putExtra("album_name", selectedAlbum.album_name)
+                putExtra("artist_name", selectedAlbum.artist_name)
+                putExtra("album_cover", selectedAlbum.album_cover)
+            }
+            startActivity(intent)
+        }
 
         val signOutTxt: TextView = findViewById(R.id.signout_txt)
         signOutTxt.setOnClickListener {
@@ -44,31 +74,26 @@ class LandingPageActivity : Activity() {
             playBtn.visibility = ImageView.GONE
             pauseBtn.visibility = ImageView.VISIBLE
         }
-
         pauseBtn.setOnClickListener {
             animateButton(pauseBtn)
             pauseBtn.visibility = ImageView.GONE
             playBtn.visibility = ImageView.VISIBLE
         }
-
         profileBtn.setOnClickListener {
             animateButton(profileBtn)
             profileBtn.visibility = ImageView.GONE
             profileBtn.visibility = ImageView.VISIBLE
         }
-
         shuffleBtn.setOnClickListener {
             isShuffleOn = !isShuffleOn
             shuffleBtn.setImageResource(if (isShuffleOn) R.drawable.shuffling_on_btn else R.drawable.shuffling_btn)
             animateButton(shuffleBtn)
         }
-
         repeatBtn.setOnClickListener {
             isRepeatOn = !isRepeatOn
             repeatBtn.setImageResource(if (isRepeatOn) R.drawable.repeat_on_btn else R.drawable.repeat_btn)
             animateButton(repeatBtn)
         }
-
         homeBtn.setOnClickListener {
             setActiveNavButton(homeBtn, searchBtn, profileBtn)
         }
@@ -77,53 +102,14 @@ class LandingPageActivity : Activity() {
             val intent = Intent(this, SearchActivity::class.java)
             startActivity(intent)
         }
-
         profileBtn.setOnClickListener {
             setActiveNavButton(profileBtn, homeBtn, searchBtn)
             val intent = Intent(this, ProfilePage::class.java)
             startActivity(intent)
         }
 
-        setupAlbumClickListeners()
     }
 
-    private fun setupAlbumClickListeners() {
-        val album1: LinearLayout = findViewById(R.id.album1)
-        val album2: LinearLayout = findViewById(R.id.album2)
-        val album3: LinearLayout = findViewById(R.id.album3)
-        val album4: LinearLayout = findViewById(R.id.album4)
-        val album5: LinearLayout = findViewById(R.id.album5)
-        val album6: LinearLayout = findViewById(R.id.album6)
-        val album7: LinearLayout = findViewById(R.id.album7)
-        val album8: LinearLayout = findViewById(R.id.album8)
-
-        val albumClickListener = View.OnClickListener { view ->
-            val intent = Intent(this, AlbumActivity::class.java)
-
-            when (view.id) {
-                R.id.album1 -> intent.putExtra("album_name", "Album 1")
-                R.id.album2 -> intent.putExtra("album_name", "Album 2")
-                R.id.album3 -> intent.putExtra("album_name", "Album 3")
-                R.id.album4 -> intent.putExtra("album_name", "Album 4")
-                R.id.album5 -> intent.putExtra("album_name", "Album 5")
-                R.id.album6 -> intent.putExtra("album_name", "Album 6")
-                R.id.album7 -> intent.putExtra("album_name", "Album 7")
-                R.id.album8-> intent.putExtra("album_name", "Album 8")
-
-            }
-
-            startActivity(intent)
-        }
-
-        album1.setOnClickListener(albumClickListener)
-        album2.setOnClickListener(albumClickListener)
-        album3.setOnClickListener(albumClickListener)
-        album4.setOnClickListener(albumClickListener)
-        album5.setOnClickListener(albumClickListener)
-        album6.setOnClickListener(albumClickListener)
-        album7.setOnClickListener(albumClickListener)
-        album8.setOnClickListener(albumClickListener)
-    }
 
     private fun setActiveNavButton(activeBtn: ImageView, btn1: ImageView, btn2: ImageView) {
         activeBtn.setImageResource(getActiveImage(activeBtn.id))
@@ -131,7 +117,6 @@ class LandingPageActivity : Activity() {
         btn2.setImageResource(getInactiveImage(btn2.id))
         animateButton(activeBtn)
     }
-
     private fun getActiveImage(buttonId: Int): Int {
         return when (buttonId) {
             R.id.homeBtn -> R.drawable.home_on_btn
@@ -140,7 +125,6 @@ class LandingPageActivity : Activity() {
             else -> throw IllegalArgumentException("Unknown button ID")
         }
     }
-
     private fun getInactiveImage(buttonId: Int): Int {
         return when (buttonId) {
             R.id.homeBtn -> R.drawable.home_btn
@@ -149,8 +133,6 @@ class LandingPageActivity : Activity() {
             else -> throw IllegalArgumentException("Unknown button ID")
         }
     }
-
-
     private fun animateButton(button: ImageView) {
         val scaleDown = ObjectAnimator.ofPropertyValuesHolder(
             button,
