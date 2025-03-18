@@ -1,0 +1,490 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#282829"
+    tools:context=".LandingPageActivity">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="#1E1E1E1E"
+        android:gravity="center_vertical"
+        android:layout_alignParentTop="true">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/wolfgang_logo_white"
+            android:layout_marginEnd="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#c0fdfb"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/manrope"
+            android:text="Wolfgang"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/pfp_placeholder"
+            android:layout_marginEnd="8dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/album_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp"
+        android:layout_below="@id/header"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/album_placeholder"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Album"
+            android:textColor="#c0fdfb"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/manrope"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Artist"
+            android:textColor="#c0fdfb"
+            android:textSize="16sp"
+            android:fontFamily="@font/manrope"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/album_info"
+        android:layout_above="@id/mini_player">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1. Track One"
+                    android:textColor="#c0fdfb"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/manrope"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3:42"
+                    android:textColor="#c0fdfb"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/manrope"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="2. Track Two"
+                    android:textColor="#c0fdfb"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/manrope"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4:05"
+                    android:textColor="#c0fdfb"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/manrope"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="3. Track Three"
+                    android:textColor="#c0fdfb"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/manrope"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3:25"
+                    android:textColor="#c0fdfb"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/manrope"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="4. Track Four"
+                    android:textColor="#c0fdfb"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/manrope"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4:10"
+                    android:textColor="#c0fdfb"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/manrope"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="5. Track Five"
+                    android:textColor="#c0fdfb"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/manrope"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8:13"
+                    android:textColor="#c0fdfb"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/manrope"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="6. Track Six"
+                    android:textColor="#c0fdfb"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/manrope"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2:00"
+                    android:textColor="#c0fdfb"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/manrope"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="7. Track Seven"
+                    android:textColor="#c0fdfb"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/manrope"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5:42"
+                    android:textColor="#c0fdfb"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/manrope"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="8. Track Eight"
+                    android:textColor="#c0fdfb"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/manrope"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4:10"
+                    android:textColor="#c0fdfb"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/manrope"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="9. Track Nine"
+                    android:textColor="#c0fdfb"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/manrope"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5:19"
+                    android:textColor="#c0fdfb"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/manrope"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="10. Track Ten"
+                    android:textColor="#c0fdfb"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/manrope"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4:29"
+                    android:textColor="#c0fdfb"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/manrope"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="11. Track Eleven"
+                    android:textColor="#c0fdfb"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/manrope"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3:33"
+                    android:textColor="#c0fdfb"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/manrope"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/mini_player"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mini_player"
+        android:padding="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_above="@id/bottom_nav">
+
+        <ImageView
+            android:id="@+id/shuffleBtn"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:src="@drawable/shuffling_btn"
+            android:layout_weight="1"
+            android:scaleType="centerInside"/>
+
+        <ImageView
+            android:id="@+id/prevBtn"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:src="@drawable/prev_btn"
+            android:layout_weight="1"
+            android:scaleType="centerInside"/>
+
+        <ImageView
+            android:id="@+id/playBtn"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:src="@drawable/play_btn"
+            android:layout_weight="1"
+            android:scaleType="centerInside"/>
+
+        <ImageView
+            android:id="@+id/pauseBtn"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:src="@drawable/pause_btn"
+            android:visibility="gone"
+            android:layout_weight="1"
+            android:scaleType="centerInside"/>
+
+        <ImageView
+            android:id="@+id/nextBtn"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:src="@drawable/next_btn"
+            android:layout_weight="1"
+            android:scaleType="centerInside"/>
+
+        <ImageView
+            android:id="@+id/repeatBtn"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:src="@drawable/repeat_btn"
+            android:layout_weight="1"
+            android:scaleType="centerInside"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1E1E1E"
+        android:padding="12dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/homeBtn"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:src="@drawable/home_btn"
+            android:layout_weight="1"
+            android:scaleType="centerInside"/>
+
+        <ImageView
+            android:id="@+id/searchBtn"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:src="@drawable/search_btn"
+            android:layout_weight="1"
+            android:scaleType="centerInside"/>
+
+        <ImageView
+            android:id="@+id/profileBtn"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:src="@drawable/profile_btn"
+            android:layout_weight="1"
+            android:scaleType="centerInside"/>
+    </LinearLayout>
+
+</RelativeLayout>

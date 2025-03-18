@@ -1,0 +1,361 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#282829"
+    tools:context=".LandingPageActivity">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical"
+        android:layout_alignParentTop="true">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/wolfgang_logo_white"
+            android:layout_marginEnd="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#c0fdfb"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/manrope"
+            android:text="Wolfgang"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/pfp_placeholder"
+            android:layout_marginEnd="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign out"
+            android:id="@+id/signout_txt"
+            android:fontFamily="@font/manrope"
+            android:textColor="#c0fdfb"
+            android:textSize="16sp"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header"
+        android:layout_above="@id/mini_player"
+        android:fillViewport="true"
+        android:layout_marginTop="8dp">
+
+        <GridLayout
+            android:id="@+id/albumsGrid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:padding="16dp"
+            android:alignmentMode="alignMargins">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:id="@+id/album1"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/album_placeholder"
+                    android:scaleType="centerCrop"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Album 1"
+                    android:fontFamily="@font/manrope"
+                    android:textColor="#c0fdfb"
+                    android:textSize="16sp"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:id="@+id/album2"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/album_placeholder"
+                    android:scaleType="centerCrop"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Album 2"
+                    android:fontFamily="@font/manrope"
+                    android:textColor="#c0fdfb"
+                    android:textSize="16sp"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:id="@+id/album3"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/album_placeholder"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Album 3"
+                    android:fontFamily="@font/manrope"
+                    android:textColor="#c0fdfb" android:textSize="16sp"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:id="@+id/album4"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/album_placeholder"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Album 4"
+                    android:fontFamily="@font/manrope"
+                    android:textColor="#c0fdfb"
+                    android:textSize="16sp"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:id="@+id/album5"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/album_placeholder"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Album 5"
+                    android:fontFamily="@font/manrope"
+                    android:textColor="#c0fdfb"
+                    android:textSize="16sp"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:id="@+id/album6"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/album_placeholder"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Album 6"
+                    android:fontFamily="@font/manrope"
+                    android:textColor="#c0fdfb"
+                    android:textSize="16sp"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:id="@+id/album7"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/album_placeholder"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Album 7"
+                    android:fontFamily="@font/manrope"
+                    android:textColor="#c0fdfb"
+                    android:textSize="16sp"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:id="@+id/album8"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/album_placeholder"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Album 8"
+                    android:fontFamily="@font/manrope"
+                    android:textColor="#c0fdfb"
+                    android:textSize="16sp"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+        </GridLayout>
+    </ScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/mini_player"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mini_player"
+        android:padding="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_above="@id/bottom_nav">
+
+        <ImageView
+            android:id="@+id/shuffleBtn"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:src="@drawable/shuffling_btn"
+            android:layout_weight="1"
+            android:scaleType="centerInside"/>
+
+        <ImageView
+            android:id="@+id/prevBtn"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:src="@drawable/prev_btn"
+            android:layout_weight="1"
+            android:scaleType="centerInside"/>
+
+        <ImageView
+            android:id="@+id/playBtn"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:src="@drawable/play_btn"
+            android:layout_weight="1"
+            android:scaleType="centerInside"/>
+
+        <ImageView
+            android:id="@+id/pauseBtn"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:src="@drawable/pause_btn"
+            android:visibility="gone"
+            android:layout_weight="1"
+            android:scaleType="centerInside"/>
+
+        <ImageView
+            android:id="@+id/nextBtn"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:src="@drawable/next_btn"
+            android:layout_weight="1"
+            android:scaleType="centerInside"/>
+
+        <ImageView
+            android:id="@+id/repeatBtn"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:src="@drawable/repeat_btn"
+            android:layout_weight="1"
+            android:scaleType="centerInside"/>
+    </LinearLayout>
+
+    <!-- Bottom Navigation Bar -->
+    <LinearLayout
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1E1E1E"
+        android:padding="12dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/homeBtn"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:src="@drawable/home_btn"
+            android:layout_weight="1"
+            android:scaleType="centerInside"/>
+
+        <ImageView
+            android:id="@+id/searchBtn"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:src="@drawable/search_btn"
+            android:layout_weight="1"
+            android:scaleType="centerInside"/>
+
+        <ImageView
+            android:id="@+id/profileBtn"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:src="@drawable/profile_btn"
+            android:layout_weight="1"
+            android:scaleType="centerInside"/>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsPage"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:background="#64B6AC">
+
+        <ImageButton
+            android:id="@+id/buttonBack"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/arrow_white_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:textSize="40sp"
+            android:fontFamily="@font/manrope_bold"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:background="#282829">
+
+        <LinearLayout
+            android:id="@+id/generalArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="General"
+                android:textSize="20sp"
+                android:fontFamily="@font/manrope_bold"
+                android:textColor="#ffffff"
+                android:paddingLeft="15dp"
+                android:background="@drawable/round_corner"/>
+
+            <LinearLayout
+                android:id="@+id/profileBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/profile_white_icon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Profile"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/manrope_bold"
+                    android:textColor="#FFFFFF"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <ImageButton
+                    android:id="@+id/buttonToProfile"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@null"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/arrow_white_icon2"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.1dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="#C0FDFB"/>
+
+            <LinearLayout
+                android:id="@+id/notificationArea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/notification_white_icon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Notifications"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/manrope_bold"
+                    android:textColor="#FFFFFF"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <ImageButton
+                    android:id="@+id/buttonToNotification"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/arrow_white_icon2"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.1dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="#C0FDFB"/>
+
+            <LinearLayout
+                android:id="@+id/logoutBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/logout_white_icon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Logout"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/manrope_bold"
+                    android:textColor="#FFFFFF"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <ImageButton
+                    android:id="@+id/buttonToLogout"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@null"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/arrow_white_icon2"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/feedBackArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Feedback"
+                android:textSize="20sp"
+                android:fontFamily="@font/manrope_bold"
+                android:textColor="#ffffff"
+                android:paddingLeft="15dp"
+                android:background="@drawable/round_corner"/>
+
+            <LinearLayout
+                android:id="@+id/sendFeedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/send_white_icon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Send feedback"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/manrope_bold"
+                    android:textColor="#FFFFFF"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <ImageButton
+                    android:id="@+id/buttonToSendFeedback"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@null"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/arrow_white_icon2"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.1dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="#C0FDFB"/>
+
+            <LinearLayout
+                android:id="@+id/sendReport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/report_white_icon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Report bug"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/manrope_bold"
+                    android:textColor="#FFFFFF"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <ImageButton
+                    android:id="@+id/buttonToReportBug"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@null"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/arrow_white_icon2"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/aboutDevsArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Developers"
+                android:textSize="20sp"
+                android:fontFamily="@font/manrope_bold"
+                android:textColor="#ffffff"
+                android:paddingLeft="15dp"
+                android:background="@drawable/round_corner"/>
+
+            <LinearLayout
+                android:id="@+id/developersBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/developer_white_icon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="About us"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/manrope_bold"
+                    android:textColor="#FFFFFF"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <ImageButton
+                    android:id="@+id/buttonToDeveloperInfo"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@null"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/arrow_white_icon2"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
