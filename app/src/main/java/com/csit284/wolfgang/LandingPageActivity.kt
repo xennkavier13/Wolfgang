@@ -70,29 +70,24 @@ class LandingPageActivity : Activity() {
         homeBtn.setImageResource(R.drawable.home_on_btn)
 
         playBtn.setOnClickListener {
-            animateButton(playBtn)
             playBtn.visibility = ImageView.GONE
             pauseBtn.visibility = ImageView.VISIBLE
         }
         pauseBtn.setOnClickListener {
-            animateButton(pauseBtn)
             pauseBtn.visibility = ImageView.GONE
             playBtn.visibility = ImageView.VISIBLE
         }
         profileBtn.setOnClickListener {
-            animateButton(profileBtn)
             profileBtn.visibility = ImageView.GONE
             profileBtn.visibility = ImageView.VISIBLE
         }
         shuffleBtn.setOnClickListener {
             isShuffleOn = !isShuffleOn
-            shuffleBtn.setImageResource(if (isShuffleOn) R.drawable.shuffling_on_btn else R.drawable.shuffling_btn)
-            animateButton(shuffleBtn)
+            shuffleBtn.setImageResource(if (isShuffleOn) R.drawable.shuffling_on_btn else R.drawable.shuffle_off_btn)
         }
         repeatBtn.setOnClickListener {
             isRepeatOn = !isRepeatOn
-            repeatBtn.setImageResource(if (isRepeatOn) R.drawable.repeat_on_btn else R.drawable.repeat_btn)
-            animateButton(repeatBtn)
+            repeatBtn.setImageResource(if (isRepeatOn) R.drawable.repeat_on_btn else R.drawable.repeat_off_btn)
         }
         homeBtn.setOnClickListener {
             setActiveNavButton(homeBtn, searchBtn, profileBtn)
@@ -115,7 +110,6 @@ class LandingPageActivity : Activity() {
         activeBtn.setImageResource(getActiveImage(activeBtn.id))
         btn1.setImageResource(getInactiveImage(btn1.id))
         btn2.setImageResource(getInactiveImage(btn2.id))
-        animateButton(activeBtn)
     }
     private fun getActiveImage(buttonId: Int): Int {
         return when (buttonId) {
@@ -133,17 +127,7 @@ class LandingPageActivity : Activity() {
             else -> throw IllegalArgumentException("Unknown button ID")
         }
     }
-    private fun animateButton(button: ImageView) {
-        val scaleDown = ObjectAnimator.ofPropertyValuesHolder(
-            button,
-            PropertyValuesHolder.ofFloat("scaleX", 0.8f),
-            PropertyValuesHolder.ofFloat("scaleY", 0.8f)
-        )
-        scaleDown.duration = 100
-        scaleDown.repeatCount = 1
-        scaleDown.repeatMode = ObjectAnimator.REVERSE
-        scaleDown.start()
-    }
+
 
     private fun showSignOutConfirmation() {
         AlertDialog.Builder(this)

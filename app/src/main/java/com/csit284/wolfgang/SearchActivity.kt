@@ -1,7 +1,5 @@
 package com.csit284.wolfgang
 
-import android.animation.ObjectAnimator
-import android.animation.PropertyValuesHolder
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -31,27 +29,23 @@ class SearchActivity : Activity() {
         searchBtn.setImageResource(R.drawable.search_on_btn)
 
         playBtn.setOnClickListener {
-            animateButton(playBtn)
             playBtn.visibility = ImageView.GONE
             pauseBtn.visibility = ImageView.VISIBLE
         }
 
         pauseBtn.setOnClickListener {
-            animateButton(pauseBtn)
             pauseBtn.visibility = ImageView.GONE
             playBtn.visibility = ImageView.VISIBLE
         }
 
         shuffleBtn.setOnClickListener {
             isShuffleOn = !isShuffleOn
-            shuffleBtn.setImageResource(if (isShuffleOn) R.drawable.shuffling_on_btn else R.drawable.shuffling_btn)
-            animateButton(shuffleBtn)
+            shuffleBtn.setImageResource(if (isShuffleOn) R.drawable.shuffling_on_btn else R.drawable.shuffle_off_btn)
         }
 
         repeatBtn.setOnClickListener {
             isRepeatOn = !isRepeatOn
-            repeatBtn.setImageResource(if (isRepeatOn) R.drawable.repeat_on_btn else R.drawable.repeat_btn)
-            animateButton(repeatBtn)
+            repeatBtn.setImageResource(if (isRepeatOn) R.drawable.repeat_on_btn else R.drawable.repeat_off_btn)
         }
 
         homeBtn.setOnClickListener {
@@ -76,7 +70,6 @@ class SearchActivity : Activity() {
         activeBtn.setImageResource(getActiveImage(activeBtn.id))
         btn1.setImageResource(getInactiveImage(btn1.id))
         btn2.setImageResource(getInactiveImage(btn2.id))
-        animateButton(activeBtn)
     }
 
     private fun getActiveImage(buttonId: Int): Int {
@@ -98,15 +91,5 @@ class SearchActivity : Activity() {
     }
 
 
-    private fun animateButton(button: ImageView) {
-        val scaleDown = ObjectAnimator.ofPropertyValuesHolder(
-            button,
-            PropertyValuesHolder.ofFloat("scaleX", 0.8f),
-            PropertyValuesHolder.ofFloat("scaleY", 0.8f)
-        )
-        scaleDown.duration = 100
-        scaleDown.repeatCount = 1
-        scaleDown.repeatMode = ObjectAnimator.REVERSE
-        scaleDown.start()
-    }
+
 }
