@@ -6,12 +6,6 @@ import android.os.Bundle
 import android.widget.TextView
 import android.app.AlertDialog
 import android.widget.ImageView
-import android.animation.ObjectAnimator
-import android.animation.PropertyValuesHolder
-import android.media.Image
-import android.provider.ContactsContract.Profile
-import android.view.View
-import android.widget.LinearLayout
 import android.widget.ListView
 import com.csit284.wolfgang.data.Album
 import com.csit284.wolfgang.helper.CustomListAdapter
@@ -36,7 +30,6 @@ class LandingPageActivity : Activity() {
             Album("Album 6", "Artist 6", R.drawable.album_placeholder),
             Album("Album 7", "Artist 7", R.drawable.album_placeholder),
             Album("Album 8", "Artist 8", R.drawable.album_placeholder)
-
         )
 
         val adapter = CustomListAdapter(this, albums)
@@ -134,7 +127,7 @@ class LandingPageActivity : Activity() {
             .setTitle("Sign Out")
             .setMessage("Are you sure you want to sign out?")
             .setPositiveButton("Yes") { _, _ ->
-                val intent = Intent(this, LogicActivity::class.java)
+                val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
                 finish()
             }

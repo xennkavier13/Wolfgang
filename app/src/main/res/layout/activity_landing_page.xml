@@ -69,7 +69,7 @@
             android:id="@+id/shuffleBtn"
             android:layout_width="0dp"
             android:layout_height="36dp"
-            android:src="@drawable/shuffling_btn"
+            android:src="@drawable/shuffle_off_btn"
             android:layout_weight="1"
             android:scaleType="centerInside"/>
 
@@ -110,7 +110,7 @@
             android:id="@+id/repeatBtn"
             android:layout_width="0dp"
             android:layout_height="36dp"
-            android:src="@drawable/repeat_btn"
+            android:src="@drawable/repeat_off_btn"
             android:layout_weight="1"
             android:scaleType="centerInside"/>
     </LinearLayout>

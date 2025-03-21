@@ -8,10 +8,10 @@ import android.widget.Button
 import android.widget.EditText
 import com.csit284.wolfgang.app.DataManagement
 
-class LogicActivity : Activity() {
+class LoginActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_logic)
+        setContentView(R.layout.activity_login)
 
         val loginbtn = findViewById<Button>(R.id.loginbtn)
         val createAcc = findViewById<Button>(R.id.createAccBtn)
@@ -21,6 +21,8 @@ class LogicActivity : Activity() {
         val email = intent.getStringExtra("EMAIL")
         val password = intent.getStringExtra("PASSWORD")
 
+
+        //this is the input from CreateAccountActivity
         if (!email.isNullOrEmpty()) {
             emailInput.setText(email)
         }

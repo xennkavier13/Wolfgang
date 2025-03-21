@@ -37,7 +37,7 @@ class CreateAccountActivity : Activity() {
             Log.e("csit284", "Account created successfully!")
             Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show()
 
-            val intent = Intent(this, LogicActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             intent.putExtra("EMAIL", email)
             intent.putExtra("PASSWORD", password)
             startActivity(intent)
