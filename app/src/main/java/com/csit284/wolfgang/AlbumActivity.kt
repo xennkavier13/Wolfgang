@@ -1,14 +1,15 @@
 package com.csit284.wolfgang
 
-import android.animation.ObjectAnimator
-import android.animation.PropertyValuesHolder
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.ListView
+import android.widget.Toast
+import com.csit284.wolfgang.helper.NavigationHelper
 
 
-class AlbumActivity : Activity() {
+class AlbumActivity : NavigationHelper() {
 
     private var isShuffleOn = false
     private var isRepeatOn = false
@@ -27,7 +28,25 @@ class AlbumActivity : Activity() {
         val searchBtn: ImageView = findViewById(R.id.searchBtn)
         val profileBtn: ImageView = findViewById(R.id.profileBtn)
 
-        
+        val listview = findViewById<ListView>(R.id.listview)
+
+        val trackList = listOf("Track 1", "Track 2", "Track 3", "Track 4", "Track 5",
+                                "Track 6", "Track 7", "Track 8", "Track 9", "Track 10" )
+
+        val adapter = ArrayAdapter(
+            this, android.R.layout.simple_list_item_1,
+            trackList
+        )
+
+        listview.adapter = adapter
+
+        listview.setOnItemClickListener { _, _, position, _ ->
+            Toast.makeText(
+                this,
+                "${trackList[position]}  is playing",
+                Toast.LENGTH_LONG
+            ).show()
+        }
 
         playBtn.setOnClickListener {
             playBtn.visibility = ImageView.GONE
@@ -63,33 +82,6 @@ class AlbumActivity : Activity() {
         }
         profileBtn.setOnClickListener {
             setActiveNavButton(profileBtn, homeBtn, searchBtn)
-        }
-
-
-    }
-
-
-    private fun setActiveNavButton(activeBtn: ImageView, btn1: ImageView, btn2: ImageView) {
-        activeBtn.setImageResource(getActiveImage(activeBtn.id))
-        btn1.setImageResource(getInactiveImage(btn1.id))
-        btn2.setImageResource(getInactiveImage(btn2.id))
-    }
-
-    private fun getActiveImage(buttonId: Int): Int {
-        return when (buttonId) {
-            R.id.homeBtn -> R.drawable.home_on_btn
-            R.id.searchBtn -> R.drawable.search_on_btn
-            R.id.profileBtn -> R.drawable.profile_on_btn
-            else -> throw IllegalArgumentException("Unknown button ID")
-        }
-    }
-
-    private fun getInactiveImage(buttonId: Int): Int {
-        return when (buttonId) {
-            R.id.homeBtn -> R.drawable.home_btn
-            R.id.searchBtn -> R.drawable.search_btn
-            R.id.profileBtn -> R.drawable.profile_btn
-            else -> throw IllegalArgumentException("Unknown button ID")
         }
     }
 

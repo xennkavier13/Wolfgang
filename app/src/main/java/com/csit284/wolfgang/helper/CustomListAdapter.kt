@@ -15,8 +15,7 @@ class CustomListAdapter (
     val listOfAlbums: List<Album>
 ): BaseAdapter() {
     override fun getView(position: Int, contentView: View?, parent: ViewGroup?): View {
-        val view = contentView ?: LayoutInflater.from(context)
-            .inflate(R.layout.item_albums, parent, false)
+        val view = contentView ?: LayoutInflater.from(context).inflate(R.layout.item_albums, parent, false)
 
         val albums = listOfAlbums[position]
 

@@ -9,12 +9,11 @@ import android.widget.ImageView
 import android.widget.ListView
 import com.csit284.wolfgang.data.Album
 import com.csit284.wolfgang.helper.CustomListAdapter
+import com.csit284.wolfgang.helper.NavigationHelper
 
-class LandingPageActivity : Activity() {
-
+class LandingPageActivity : NavigationHelper() {
     private var isShuffleOn = false
     private var isRepeatOn = false
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing_page)
@@ -70,10 +69,6 @@ class LandingPageActivity : Activity() {
             pauseBtn.visibility = ImageView.GONE
             playBtn.visibility = ImageView.VISIBLE
         }
-        profileBtn.setOnClickListener {
-            profileBtn.visibility = ImageView.GONE
-            profileBtn.visibility = ImageView.VISIBLE
-        }
         shuffleBtn.setOnClickListener {
             isShuffleOn = !isShuffleOn
             shuffleBtn.setImageResource(if (isShuffleOn) R.drawable.shuffling_on_btn else R.drawable.shuffle_off_btn)
@@ -96,42 +91,5 @@ class LandingPageActivity : Activity() {
             startActivity(intent)
         }
 
-    }
-
-
-    private fun setActiveNavButton(activeBtn: ImageView, btn1: ImageView, btn2: ImageView) {
-        activeBtn.setImageResource(getActiveImage(activeBtn.id))
-        btn1.setImageResource(getInactiveImage(btn1.id))
-        btn2.setImageResource(getInactiveImage(btn2.id))
-    }
-    private fun getActiveImage(buttonId: Int): Int {
-        return when (buttonId) {
-            R.id.homeBtn -> R.drawable.home_on_btn
-            R.id.searchBtn -> R.drawable.search_on_btn
-            R.id.profileBtn -> R.drawable.profile_on_btn
-            else -> throw IllegalArgumentException("Unknown button ID")
-        }
-    }
-    private fun getInactiveImage(buttonId: Int): Int {
-        return when (buttonId) {
-            R.id.homeBtn -> R.drawable.home_btn
-            R.id.searchBtn -> R.drawable.search_btn
-            R.id.profileBtn -> R.drawable.profile_btn
-            else -> throw IllegalArgumentException("Unknown button ID")
-        }
-    }
-
-
-    private fun showSignOutConfirmation() {
-        AlertDialog.Builder(this)
-            .setTitle("Sign Out")
-            .setMessage("Are you sure you want to sign out?")
-            .setPositiveButton("Yes") { _, _ ->
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
-            .setNegativeButton("Cancel", null)
-            .show()
     }
 }

@@ -4,9 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
+import com.csit284.wolfgang.helper.NavigationHelper
 
 
-class SearchActivity : Activity() {
+class SearchActivity : NavigationHelper() {
 
     private var isShuffleOn = false
     private var isRepeatOn = false
@@ -63,33 +64,4 @@ class SearchActivity : Activity() {
         }
 
     }
-
-
-
-    private fun setActiveNavButton(activeBtn: ImageView, btn1: ImageView, btn2: ImageView) {
-        activeBtn.setImageResource(getActiveImage(activeBtn.id))
-        btn1.setImageResource(getInactiveImage(btn1.id))
-        btn2.setImageResource(getInactiveImage(btn2.id))
-    }
-
-    private fun getActiveImage(buttonId: Int): Int {
-        return when (buttonId) {
-            R.id.homeBtn -> R.drawable.home_on_btn
-            R.id.searchBtn -> R.drawable.search_on_btn
-            R.id.profileBtn -> R.drawable.profile_on_btn
-            else -> throw IllegalArgumentException("Unknown button ID")
-        }
-    }
-
-    private fun getInactiveImage(buttonId: Int): Int {
-        return when (buttonId) {
-            R.id.homeBtn -> R.drawable.home_btn
-            R.id.searchBtn -> R.drawable.search_btn
-            R.id.profileBtn -> R.drawable.profile_btn
-            else -> throw IllegalArgumentException("Unknown button ID")
-        }
-    }
-
-
-
 }

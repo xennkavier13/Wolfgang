@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="#282829"
     tools:context=".LandingPageActivity">
-
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -15,13 +14,11 @@
         android:padding="16dp"
         android:gravity="center_vertical"
         android:layout_alignParentTop="true">
-
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/wolfgang_logo_white"
             android:layout_marginEnd="8dp"/>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,18 +27,15 @@
             android:textStyle="bold"
             android:fontFamily="@font/manrope"
             android:text="Wolfgang"/>
-
         <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
-
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/pfp_placeholder"
             android:layout_marginEnd="8dp"/>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,8 +46,6 @@
             android:textSize="16sp"
             android:layout_gravity="center_vertical"/>
     </LinearLayout>
-
-
 
     <LinearLayout
         android:id="@+id/mini_player"
@@ -115,9 +107,6 @@
             android:scaleType="centerInside"/>
     </LinearLayout>
 
-
-
-    <!-- Bottom Navigation Bar -->
     <LinearLayout
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
@@ -127,7 +116,6 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_alignParentBottom="true">
-
         <ImageView
             android:id="@+id/homeBtn"
             android:layout_width="0dp"
@@ -135,7 +123,6 @@
             android:src="@drawable/home_btn"
             android:layout_weight="1"
             android:scaleType="centerInside"/>
-
         <ImageView
             android:id="@+id/searchBtn"
             android:layout_width="0dp"
@@ -143,7 +130,6 @@
             android:src="@drawable/search_btn"
             android:layout_weight="1"
             android:scaleType="centerInside"/>
-
         <ImageView
             android:id="@+id/profileBtn"
             android:layout_width="0dp"
@@ -159,6 +145,4 @@
         android:layout_height="match_parent"
         android:layout_marginTop="102dp"
         android:layout_above="@id/mini_player" />
-
-
 </RelativeLayout>
