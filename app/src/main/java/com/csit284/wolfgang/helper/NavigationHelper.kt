@@ -8,7 +8,6 @@ import com.csit284.wolfgang.LoginActivity
 import com.csit284.wolfgang.R
 
 abstract class NavigationHelper : Activity() {
-
     protected fun setActiveNavButton(activeBtn: ImageView, btn1: ImageView, btn2: ImageView) {
         activeBtn.setImageResource(getActiveImage(activeBtn.id))
         btn1.setImageResource(getInactiveImage(btn1.id))
