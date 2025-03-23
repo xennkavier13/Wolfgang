@@ -6,16 +6,21 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.ListView
 import android.widget.Toast
+import com.csit284.wolfgang.data.SettingsBlock
+import com.csit284.wolfgang.helper.SettingsCustomListViewAdapter
 import kotlin.system.exitProcess
 
 class SettingsPage : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings_page)
+
 
         val buttonBack = findViewById<ImageButton>(R.id.buttonBack)
         buttonBack.setOnClickListener {
@@ -26,59 +31,68 @@ class SettingsPage : Activity() {
             finish()
         }
 
-        val buttonToProfile = findViewById<ImageButton>(R.id.buttonToProfile)
-        buttonToProfile.setOnClickListener {
-            Log.e("Settings page", "Profile button has been pressed")
+        val settingsListView = findViewById<ListView>(R.id.settingsListView)
 
-            Toast.makeText(this, "Profile button has been pressed", Toast.LENGTH_LONG).show()
+        val listOfBlocks = listOf(
+            SettingsBlock(R.drawable.profile_white_icon, "Profile", R.drawable.arrow_white_icon2, "profile"),
+            SettingsBlock(R.drawable.notification_white_icon, "Notification", R.drawable.arrow_white_icon2, "notification"),
+            SettingsBlock(R.drawable.send_white_icon, "Send feedback", R.drawable.arrow_white_icon2, "feedback"),
+            SettingsBlock(R.drawable.report_white_icon, "Report bug", R.drawable.arrow_white_icon2, "report"),
+            SettingsBlock(R.drawable.developer_white_icon, "About us", R.drawable.arrow_white_icon2, "developer"),
+            SettingsBlock(R.drawable.logout_white_icon, "Logout", R.drawable.arrow_white_icon2, "logout")
+        )
 
-            val intent = Intent(this, ProfilePage::class.java)
-            startActivity(intent)
-        }
+        val adapter = SettingsCustomListViewAdapter(
+            this,
+            listOfBlocks,
+            onIconClick = {settingsBlock ->
+                when (settingsBlock.icon) {
+                    R.drawable.profile_white_icon ->  {
+                        val intent = Intent(this, ProfilePage::class.java)
+                        startActivity(intent)
+                    }
+                    R.drawable.send_white_icon -> displayFeedback()
+                    R.drawable.report_white_icon -> displayBugReport()
+                    R.drawable.developer_white_icon -> {
+                        val intent = Intent(this, DeveloperPage::class.java)
+                        startActivity(intent)
+                    }
+                    R.drawable.logout_white_icon -> displayLogout()
+                }
+            },
+            onBlockNameClick = {settingsBlock ->
+                when (settingsBlock.blockName) {
+                    "Profile" -> {
+                        val intent = Intent(this, ProfilePage::class.java)
+                        startActivity(intent)
+                    }
+                    "Send feedback" -> displayFeedback()
+                    "Report bug" -> displayBugReport()
+                    "About us" -> {
+                        val intent = Intent(this, DeveloperPage::class.java)
+                        startActivity(intent)
+                    }
+                    "Logout" -> displayLogout()
+                }
+            },
+            onArrowClick = {settingsBlock ->
+                when (settingsBlock.action) {
+                    "profile" -> {
+                        val intent = Intent(this, ProfilePage::class.java)
+                        startActivity(intent)
+                    }
+                    "feedback" -> displayFeedback()
+                    "report" -> displayBugReport()
+                    "developer" -> {
+                        val intent = Intent(this, DeveloperPage::class.java)
+                        startActivity(intent)
+                    }
+                    "logout" -> displayLogout()
+                }
+            }
+        )
 
-        val buttonToNotification = findViewById<ImageButton>(R.id.buttonToNotification)
-        buttonToNotification.setOnClickListener {
-            Log.e("Settings page", "Notification button has been pressed")
-
-            Toast.makeText(this, "Notification button has been pressed", Toast.LENGTH_LONG).show()
-        }
-
-        val buttonToLogout = findViewById<ImageButton>(R.id.buttonToLogout)
-        buttonToLogout.setOnClickListener {
-            Log.e("Settings page", "Logout button has been pressed")
-
-            Toast.makeText(this, "Logout button has been pressed", Toast.LENGTH_LONG).show()
-
-            displayLogout()
-        }
-
-        val buttonToSendFeedback = findViewById<ImageButton>(R.id.buttonToSendFeedback)
-        buttonToSendFeedback.setOnClickListener {
-            Log.e("Settings page", "Feedback button has been pressed")
-
-            Toast.makeText(this, "Feedback button has been pressed", Toast.LENGTH_LONG).show()
-
-            displayFeedback()
-        }
-
-        val buttonToReportBug = findViewById<ImageButton>(R.id.buttonToReportBug)
-        buttonToReportBug.setOnClickListener {
-            Log.e("Settings page", "Report Bug button has been pressed")
-
-            Toast.makeText(this, "Report Bug button has been pressed", Toast.LENGTH_LONG).show()
-
-            displayBugReport()
-        }
-
-        val buttonToDeveloperInfo = findViewById<ImageButton>(R.id.buttonToDeveloperInfo)
-        buttonToDeveloperInfo.setOnClickListener {
-            Log.e("Settings page", "About Developers button has been pressed")
-
-            Toast.makeText(this, "About Developers button has been pressed", Toast.LENGTH_LONG).show()
-
-            val intent = Intent(this, DeveloperPage::class.java)
-            startActivity(intent)
-        }
+        settingsListView.adapter = adapter
     }
 
     private fun displayLogout() {
@@ -92,9 +106,11 @@ class SettingsPage : Activity() {
 
             Toast.makeText(this, "Logout", Toast.LENGTH_LONG).show()
 
-            finishAffinity()
-            exitProcess(0)
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
 
+            alertDialog.dismiss()
         }
 
         val noButton = dialogView.findViewById<Button>(R.id.noButton)

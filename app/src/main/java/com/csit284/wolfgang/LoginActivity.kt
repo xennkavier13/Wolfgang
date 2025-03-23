@@ -18,6 +18,7 @@ class LoginActivity : Activity() {
         val emailInput = findViewById<EditText>(R.id.email)
         val passwordInput = findViewById<EditText>(R.id.password)
 
+        val username = intent.getStringExtra("USERNAME")
         val email = intent.getStringExtra("EMAIL")
         val password = intent.getStringExtra("PASSWORD")
 
@@ -45,7 +46,8 @@ class LoginActivity : Activity() {
                     (application as DataManagement).password = loginPassword
 
                     val intent2 = Intent(this, LandingPageActivity::class.java)
-                    intent2.putExtra("USERNAME", loginEmail)
+                    intent2.putExtra("USERNAME", username)
+                    intent2.putExtra("EMAIL", loginEmail)
                     startActivity(intent2)
                 } else {
                     Log.e("csit284", "Invalid login credentials")

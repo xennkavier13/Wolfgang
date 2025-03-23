@@ -22,6 +22,7 @@ class CreateAccountActivity : Activity() {
         val passwordConfirmInput = findViewById<EditText>(R.id.passwordConfirm)
 
         createAcc.setOnClickListener {
+            val NameInput = username.text.toString().trim()
             val email = emailInput.text.toString().trim()
             val password = passwordInput.text.toString().trim()
             val confirmPassword = passwordConfirmInput.text.toString().trim()
@@ -30,7 +31,7 @@ class CreateAccountActivity : Activity() {
             if (!passwordValidate(passwordInput, password)) return@setOnClickListener
             if (!passwordConfirmValidate(passwordConfirmInput, password, confirmPassword)) return@setOnClickListener
 
-            (application as DataManagement).username = username.text.toString()
+            (application as DataManagement).username = NameInput
             (application as DataManagement).email = email
             (application as DataManagement).password = password
 
@@ -38,6 +39,7 @@ class CreateAccountActivity : Activity() {
             Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this, LoginActivity::class.java)
+            intent.putExtra("USERNAME", NameInput)
             intent.putExtra("EMAIL", email)
             intent.putExtra("PASSWORD", password)
             startActivity(intent)
