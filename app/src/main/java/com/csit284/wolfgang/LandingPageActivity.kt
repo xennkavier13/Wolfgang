@@ -85,9 +85,13 @@ class LandingPageActivity : NavigationHelper() {
             val intent = Intent(this, SearchActivity::class.java)
             startActivity(intent)
         }
+        val username = intent.getStringExtra("USERNAME")
+        val email = intent.getStringExtra("EMAIL")
         profileBtn.setOnClickListener {
             setActiveNavButton(profileBtn, homeBtn, searchBtn)
             val intent = Intent(this, ProfilePage::class.java)
+            intent.putExtra("USERNAME", username)
+            intent.putExtra("EMAIL", email)
             startActivity(intent)
         }
 
