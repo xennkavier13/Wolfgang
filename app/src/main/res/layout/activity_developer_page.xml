@@ -61,7 +61,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="Developer 1 (sample name)"
+                    android:text="Kenn Xavier C. Dabon"
                     android:textSize="25dp"
                     android:fontFamily="@font/manrope_bold"
                     android:textColor="#FFFFFF"/>
@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="12dp"
-                    android:text="johndoe@unknownmail.com"
+                    android:text="kenn.dabon@cit.edu"
                     android:textSize="15dp"
                     android:fontFamily="@font/manrope_bold"
                     android:textColor="#FFFFFF"/>
@@ -138,7 +138,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="Developer 2 (sample name)"
+                    android:text="Dan Erik F. Dalapo"
                     android:textSize="25dp"
                     android:fontFamily="@font/manrope_bold"
                     android:textColor="#FFFFFF"/>
@@ -161,7 +161,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="12dp"
-                    android:text="johndoe@unknownmail.com"
+                    android:text="danerik.dalapo@cit.edu"
                     android:textSize="15dp"
                     android:fontFamily="@font/manrope_bold"
                     android:textColor="#FFFFFF"/>

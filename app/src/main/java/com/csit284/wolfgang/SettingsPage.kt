@@ -35,7 +35,7 @@ class SettingsPage : Activity() {
 
         val listOfBlocks = listOf(
             SettingsBlock(R.drawable.profile_white_icon, "Profile", R.drawable.arrow_white_icon2, "profile"),
-            SettingsBlock(R.drawable.notification_white_icon, "Notification", R.drawable.arrow_white_icon2, "notification"),
+            SettingsBlock(R.drawable.appearance_white_icon, "Appearance", R.drawable.arrow_white_icon2, "Appearance"),
             SettingsBlock(R.drawable.send_white_icon, "Send feedback", R.drawable.arrow_white_icon2, "feedback"),
             SettingsBlock(R.drawable.report_white_icon, "Report bug", R.drawable.arrow_white_icon2, "report"),
             SettingsBlock(R.drawable.developer_white_icon, "About us", R.drawable.arrow_white_icon2, "developer"),
