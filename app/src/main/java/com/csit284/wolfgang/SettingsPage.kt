@@ -2,8 +2,10 @@ package com.csit284.wolfgang
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.provider.MediaStore.Audio.Radio
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ArrayAdapter
@@ -11,6 +13,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ListView
+import android.widget.RadioButton
 import android.widget.Toast
 import com.csit284.wolfgang.data.SettingsBlock
 import com.csit284.wolfgang.helper.SettingsCustomListViewAdapter
@@ -35,7 +38,7 @@ class SettingsPage : Activity() {
 
         val listOfBlocks = listOf(
             SettingsBlock(R.drawable.profile_white_icon, "Profile", R.drawable.arrow_white_icon2, "profile"),
-            SettingsBlock(R.drawable.appearance_white_icon, "Appearance", R.drawable.arrow_white_icon2, "Appearance"),
+            SettingsBlock(R.drawable.appearance_white_icon, "Appearance", R.drawable.arrow_white_icon2, "appearance"),
             SettingsBlock(R.drawable.send_white_icon, "Send feedback", R.drawable.arrow_white_icon2, "feedback"),
             SettingsBlock(R.drawable.report_white_icon, "Report bug", R.drawable.arrow_white_icon2, "report"),
             SettingsBlock(R.drawable.developer_white_icon, "About us", R.drawable.arrow_white_icon2, "developer"),
@@ -51,6 +54,7 @@ class SettingsPage : Activity() {
                         val intent = Intent(this, ProfilePage::class.java)
                         startActivity(intent)
                     }
+                    R.drawable.appearance_white_icon -> displayAppearance()
                     R.drawable.send_white_icon -> displayFeedback()
                     R.drawable.report_white_icon -> displayBugReport()
                     R.drawable.developer_white_icon -> {
@@ -66,6 +70,7 @@ class SettingsPage : Activity() {
                         val intent = Intent(this, ProfilePage::class.java)
                         startActivity(intent)
                     }
+                    "Appearance" -> displayAppearance()
                     "Send feedback" -> displayFeedback()
                     "Report bug" -> displayBugReport()
                     "About us" -> {
@@ -81,6 +86,7 @@ class SettingsPage : Activity() {
                         val intent = Intent(this, ProfilePage::class.java)
                         startActivity(intent)
                     }
+                    "appearance" -> displayAppearance()
                     "feedback" -> displayFeedback()
                     "report" -> displayBugReport()
                     "developer" -> {
@@ -185,5 +191,44 @@ class SettingsPage : Activity() {
         }
 
         alertDialog.show()
+    }
+
+    private fun displayAppearance() {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.appearance_page, null)
+        val dialogBuilder = AlertDialog.Builder(this).setView(dialogView)
+        val alertDialog = dialogBuilder.create()
+
+        val lightRadio = dialogView.findViewById<RadioButton>(R.id.lightRadio)
+        val darkRadio = dialogView.findViewById<RadioButton>(R.id.darkRadio)
+
+        val sharedPreferences = this.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+
+        lightRadio.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                sharedPreferences.edit().putBoolean("darkMode", false).apply()
+                applyLightTheme()
+            }
+        }
+
+        darkRadio.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                sharedPreferences.edit().putBoolean("darkMode", true).apply()
+                applyDarkTheme()
+            }
+        }
+
+        val isDarkMode = sharedPreferences.getBoolean("darkMode", false)
+        darkRadio.isChecked = isDarkMode
+        lightRadio.isChecked = !isDarkMode
+
+        alertDialog.show()
+    }
+
+    private fun applyLightTheme() {
+        // Implement light theme application
+    }
+
+    private fun applyDarkTheme() {
+        // Implement dark theme application
     }
 }
