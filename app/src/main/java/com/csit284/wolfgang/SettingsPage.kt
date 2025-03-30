@@ -205,14 +205,14 @@ class SettingsPage : Activity() {
 
         lightRadio.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                sharedPreferences.edit().putBoolean("darkMode", false).apply()
+                sharedPreferences.edit().putBoolean("darkMode", true).apply()
                 applyLightTheme()
             }
         }
 
         darkRadio.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                sharedPreferences.edit().putBoolean("darkMode", true).apply()
+                sharedPreferences.edit().putBoolean("darkMode", false).apply()
                 applyDarkTheme()
             }
         }
