@@ -21,7 +21,9 @@ class ProfilePage : Activity() {
         buttonBack.setOnClickListener {
             Log.e("Profile page", "Back button has been pressed")
 
-            finish()
+            val intent = Intent(this, LandingPageActivity::class.java)
+            startActivity(intent)
+
         }
 
         val buttonEditProfile = findViewById<ImageButton>(R.id.buttonEditProfile)

@@ -31,12 +31,9 @@
             android:textColor="#FFFFFF"/>
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/settingsListView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/settingsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="12dp"
-        android:background="#282829"
-        android:dividerHeight="1dp"
-        android:divider="#64B6AC"/>
+        android:background="#282829"/>
 </LinearLayout>

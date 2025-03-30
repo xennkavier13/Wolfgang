@@ -5,100 +5,53 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.provider.MediaStore.Audio.Radio
 import android.util.Log
 import android.view.LayoutInflater
-import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ListView
 import android.widget.RadioButton
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.csit284.wolfgang.data.SettingsBlock
-import com.csit284.wolfgang.helper.SettingsCustomListViewAdapter
-import kotlin.system.exitProcess
+import com.csit284.wolfgang.helper.SettingsRecyclerViewAdapter
 
 class SettingsPage : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings_page)
 
-
         val buttonBack = findViewById<ImageButton>(R.id.buttonBack)
         buttonBack.setOnClickListener {
             Log.e("Settings page", "Back button has been pressed")
 
-            Toast.makeText(this, "Back button has been pressed", Toast.LENGTH_LONG).show()
-
-            finish()
+            val intent = Intent(this, LandingPageActivity::class.java)
+            startActivity(intent)
         }
 
-        val settingsListView = findViewById<ListView>(R.id.settingsListView)
-
         val listOfBlocks = listOf(
-            SettingsBlock(R.drawable.profile_white_icon, "Profile", R.drawable.arrow_white_icon2, "profile"),
-            SettingsBlock(R.drawable.appearance_white_icon, "Appearance", R.drawable.arrow_white_icon2, "appearance"),
-            SettingsBlock(R.drawable.send_white_icon, "Send feedback", R.drawable.arrow_white_icon2, "feedback"),
-            SettingsBlock(R.drawable.report_white_icon, "Report bug", R.drawable.arrow_white_icon2, "report"),
-            SettingsBlock(R.drawable.developer_white_icon, "About us", R.drawable.arrow_white_icon2, "developer"),
-            SettingsBlock(R.drawable.logout_white_icon, "Logout", R.drawable.arrow_white_icon2, "logout")
+            SettingsBlock(R.drawable.profile_white_icon, "Profile", R.drawable.arrow_white_icon2),
+            SettingsBlock(R.drawable.appearance_white_icon, "Appearance", R.drawable.arrow_white_icon2),
+            SettingsBlock(R.drawable.send_white_icon, "Send feedback", R.drawable.arrow_white_icon2),
+            SettingsBlock(R.drawable.report_white_icon, "Report bug", R.drawable.arrow_white_icon2),
+            SettingsBlock(R.drawable.developer_white_icon, "About us", R.drawable.arrow_white_icon2),
+            SettingsBlock(R.drawable.logout_white_icon, "Logout", R.drawable.arrow_white_icon2)
         )
 
-        val adapter = SettingsCustomListViewAdapter(
-            this,
-            listOfBlocks,
-            onIconClick = {settingsBlock ->
-                when (settingsBlock.icon) {
-                    R.drawable.profile_white_icon ->  {
-                        val intent = Intent(this, ProfilePage::class.java)
-                        startActivity(intent)
-                    }
-                    R.drawable.appearance_white_icon -> displayAppearance()
-                    R.drawable.send_white_icon -> displayFeedback()
-                    R.drawable.report_white_icon -> displayBugReport()
-                    R.drawable.developer_white_icon -> {
-                        val intent = Intent(this, DeveloperPage::class.java)
-                        startActivity(intent)
-                    }
-                    R.drawable.logout_white_icon -> displayLogout()
-                }
-            },
-            onBlockNameClick = {settingsBlock ->
-                when (settingsBlock.blockName) {
-                    "Profile" -> {
-                        val intent = Intent(this, ProfilePage::class.java)
-                        startActivity(intent)
-                    }
-                    "Appearance" -> displayAppearance()
-                    "Send feedback" -> displayFeedback()
-                    "Report bug" -> displayBugReport()
-                    "About us" -> {
-                        val intent = Intent(this, DeveloperPage::class.java)
-                        startActivity(intent)
-                    }
-                    "Logout" -> displayLogout()
-                }
-            },
-            onArrowClick = {settingsBlock ->
-                when (settingsBlock.action) {
-                    "profile" -> {
-                        val intent = Intent(this, ProfilePage::class.java)
-                        startActivity(intent)
-                    }
-                    "appearance" -> displayAppearance()
-                    "feedback" -> displayFeedback()
-                    "report" -> displayBugReport()
-                    "developer" -> {
-                        val intent = Intent(this, DeveloperPage::class.java)
-                        startActivity(intent)
-                    }
-                    "logout" -> displayLogout()
-                }
+        val settingsRecyclerView = findViewById<RecyclerView>(R.id.settingsRecyclerView)
+        settingsRecyclerView.layoutManager = LinearLayoutManager(this)
+        settingsRecyclerView.adapter = SettingsRecyclerViewAdapter(listOfBlocks) { block ->
+            when (block.blockName) {
+                "Profile" -> startActivity(Intent(this, ProfilePage::class.java))
+                "Appearance" -> displayAppearance()
+                "Send feedback" -> displayFeedback()
+                "Report bug" -> displayBugReport()
+                "About us" -> startActivity(Intent(this, DeveloperPage::class.java))
+                "Logout" -> displayLogout()
             }
-        )
-
-        settingsListView.adapter = adapter
+        }
     }
 
     private fun displayLogout() {
@@ -225,10 +178,10 @@ class SettingsPage : Activity() {
     }
 
     private fun applyLightTheme() {
-        // Implement light theme application
+        // to be implemented light theme application
     }
 
     private fun applyDarkTheme() {
-        // Implement dark theme application
+        // to be implemented dark theme application
     }
 }

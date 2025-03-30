@@ -112,7 +112,7 @@
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="##4f4f4f"
+        android:background="#4f4f4f"
         android:padding="12dp"
         android:orientation="horizontal"
         android:gravity="center"
