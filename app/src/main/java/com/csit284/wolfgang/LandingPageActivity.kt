@@ -59,6 +59,13 @@ class LandingPageActivity : NavigationHelper() {
         val searchBtn: ImageView = findViewById(R.id.searchBtn)
         val profileBtn: ImageView = findViewById(R.id.profileBtn)
 
+        val profile: ImageView = findViewById(R.id.profile)
+
+        profile.setOnClickListener {
+            val intent = Intent(this, ProfilePage::class.java)
+            startActivity(intent)
+        }
+
         homeBtn.setImageResource(R.drawable.home_on_btn)
 
         playBtn.setOnClickListener {

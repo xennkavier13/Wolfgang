@@ -43,6 +43,7 @@ class CreateAccountActivity : Activity() {
             intent.putExtra("EMAIL", email)
             intent.putExtra("PASSWORD", password)
             startActivity(intent)
+            finish()
         }
     }
 
