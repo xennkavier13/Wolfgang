@@ -90,6 +90,29 @@
                     android:textColor="#FFFFFF"/>
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/dev1Occupation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="25dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/developer_white_icon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="12dp"
+                    android:text="Student of CIT"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/manrope_bold"
+                    android:textColor="#FFFFFF"/>
+            </LinearLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -162,6 +185,29 @@
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="12dp"
                     android:text="danerik.dalapo@cit.edu"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/manrope_bold"
+                    android:textColor="#FFFFFF"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dev2Occupation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="25dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/developer_white_icon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="12dp"
+                    android:text="Student of CIT"
                     android:textSize="15dp"
                     android:fontFamily="@font/manrope_bold"
                     android:textColor="#FFFFFF"/>
