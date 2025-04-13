@@ -156,32 +156,32 @@ class SettingsPage : Activity() {
 
         val sharedPreferences = this.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
 
+        val isDarkMode = sharedPreferences.getBoolean("darkMode", false)
+        darkRadio.isChecked = isDarkMode
+        lightRadio.isChecked = !isDarkMode
+
         lightRadio.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                sharedPreferences.edit().putBoolean("darkMode", true).apply()
-                applyLightTheme()
+                sharedPreferences.edit().putBoolean("darkMode", false).apply()
+                darkRadio.isChecked = false
             }
         }
 
         darkRadio.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                sharedPreferences.edit().putBoolean("darkMode", false).apply()
-                applyDarkTheme()
+                sharedPreferences.edit().putBoolean("darkMode", true).apply()
+                lightRadio.isChecked = false
             }
         }
 
-        val isDarkMode = sharedPreferences.getBoolean("darkMode", false)
-        darkRadio.isChecked = isDarkMode
-        lightRadio.isChecked = !isDarkMode
-
         alertDialog.show()
     }
-
+    /*
     private fun applyLightTheme() {
-        // to be implemented light theme application
-    }
 
-    private fun applyDarkTheme() {
-        // to be implemented dark theme application
     }
+    private fun applyDarkTheme() {
+
+    }
+    */
 }

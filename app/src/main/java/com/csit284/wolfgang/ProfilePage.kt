@@ -2,6 +2,7 @@ package com.csit284.wolfgang
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -20,32 +21,30 @@ class ProfilePage : Activity() {
         val buttonBack = findViewById<ImageButton>(R.id.buttonBack)
         buttonBack.setOnClickListener {
             Log.e("Profile page", "Back button has been pressed")
-
             val intent = Intent(this, LandingPageActivity::class.java)
             startActivity(intent)
-
         }
 
         val buttonEditProfile = findViewById<ImageButton>(R.id.buttonEditProfile)
         buttonEditProfile.setOnClickListener {
             Log.e("Profile page", "Edit Profile button has been pressed")
-
             displayProfileEdit()
         }
 
-        val userName = intent.getStringExtra("USERNAME")
-        if (userName != null) {
-            findViewById<TextView>(R.id.userName).text = userName
-        }
+        // local database implementation (sharedPreferences)
+        val sharedPreferences = getSharedPreferences("login_data", Context.MODE_PRIVATE)
 
-        val email = intent.getStringExtra("EMAIL")
-        if (email != null) {
-            findViewById<TextView>(R.id.emailAcc).text = email        }
+        val storedUserName = sharedPreferences.getString("USERNAME", "")
+        val storedEmail = sharedPreferences.getString("EMAIL", "")
+        val storedPhoneNum = sharedPreferences.getString("PHONE", "")
+
+        findViewById<TextView>(R.id.userName).text = storedUserName
+        findViewById<TextView>(R.id.emailAcc).text = storedEmail
+        findViewById<TextView>(R.id.phoneNum).text = storedPhoneNum
 
         val buttonSettings = findViewById<ImageButton>(R.id.buttonSettings)
         buttonSettings.setOnClickListener {
             Log.e("Profile page", "Settings Profile button has been pressed")
-
             val intent = Intent(this, SettingsPage::class.java)
             startActivity(intent)
         }
@@ -56,14 +55,23 @@ class ProfilePage : Activity() {
         val dialogBuilder = AlertDialog.Builder(this).setView(dialogView)
         val alertDialog = dialogBuilder.create()
 
-        val name = dialogView.findViewById<EditText>(R.id.userName)
-        val email = dialogView.findViewById<EditText>(R.id.email)
-        val mobileNumber = dialogView.findViewById<EditText>(R.id.mobileNumber)
+        val nameEditText = dialogView.findViewById<EditText>(R.id.userName)
+        val emailEditText = dialogView.findViewById<EditText>(R.id.email)
+        val mobileNumberEditText = dialogView.findViewById<EditText>(R.id.mobileNumber)
+
+        val sharedPreferences = getSharedPreferences("login_data", Context.MODE_PRIVATE)
+
+        val currentName = sharedPreferences.getString("USERNAME", "")
+        val currentEmail = sharedPreferences.getString("EMAIL", "")
+        val currentMobileNumber = sharedPreferences.getString("PHONE", "")
+
+        nameEditText.setText(currentName)
+        emailEditText.setText(currentEmail)
+        mobileNumberEditText.setText(currentMobileNumber)
 
         val cancelButton = dialogView.findViewById<Button>(R.id.cancelButton)
         cancelButton.setOnClickListener {
             Log.e("Edit Profile page", "Back button has been pressed")
-
             alertDialog.dismiss()
         }
 
@@ -71,15 +79,20 @@ class ProfilePage : Activity() {
         saveButton.setOnClickListener {
             Log.e("Edit Profile page", "Save button has been pressed")
 
-            if(name.text.toString().isEmpty() || email.text.toString().isEmpty() || mobileNumber.text.toString().isEmpty()){
+            if (nameEditText.text.toString().isEmpty()) {
                 Toast.makeText(this, "Incomplete requirements", Toast.LENGTH_LONG).show()
-
                 return@setOnClickListener
             }
 
-            val newName = name.text.toString()
-            val electroMail = email.text.toString()
-            val mobNum = mobileNumber.text.toString()
+            val newName = nameEditText.text.toString()
+            val electroMail = emailEditText.text.toString()
+            val mobNum = mobileNumberEditText.text.toString()
+
+            val editor = sharedPreferences.edit()
+            editor.putString("USERNAME", newName)
+            editor.putString("EMAIL", electroMail)
+            editor.putString("PHONE", mobNum)
+            editor.apply()
 
             findViewById<TextView>(R.id.userName).text = newName
             findViewById<TextView>(R.id.phoneNum).text = mobNum
@@ -90,10 +103,8 @@ class ProfilePage : Activity() {
             Log.e("Profile Edit", "Email: $electroMail")
 
             Toast.makeText(this, "Profile Updated", Toast.LENGTH_SHORT).show()
-
             alertDialog.dismiss()
         }
-
         alertDialog.show()
     }
 }

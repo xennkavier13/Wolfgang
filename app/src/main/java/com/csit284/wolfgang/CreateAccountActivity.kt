@@ -1,6 +1,7 @@
 package com.csit284.wolfgang
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -15,14 +16,14 @@ class CreateAccountActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        val username = findViewById<EditText>(R.id.username)
-        val createAcc = findViewById<Button>(R.id.createAccBtn)
+        val usernameInput = findViewById<EditText>(R.id.username)
+        val createAccButton = findViewById<Button>(R.id.createAccBtn)
         val emailInput = findViewById<EditText>(R.id.email)
         val passwordInput = findViewById<EditText>(R.id.password)
         val passwordConfirmInput = findViewById<EditText>(R.id.passwordConfirm)
 
-        createAcc.setOnClickListener {
-            val NameInput = username.text.toString().trim()
+        createAccButton.setOnClickListener {
+            val username = usernameInput.text.toString().trim()
             val email = emailInput.text.toString().trim()
             val password = passwordInput.text.toString().trim()
             val confirmPassword = passwordConfirmInput.text.toString().trim()
@@ -31,15 +32,19 @@ class CreateAccountActivity : Activity() {
             if (!passwordValidate(passwordInput, password)) return@setOnClickListener
             if (!passwordConfirmValidate(passwordConfirmInput, password, confirmPassword)) return@setOnClickListener
 
-            (application as DataManagement).username = NameInput
-            (application as DataManagement).email = email
-            (application as DataManagement).password = password
+            // local database implementation (sharedPreferences)
+            val sharedPreferences = getSharedPreferences("login_data", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString("USERNAME", username)
+            editor.putString("EMAIL", email)
+            editor.putString("PASSWORD", password)
+            editor.apply()
 
             Log.e("csit284", "Account created successfully!")
             Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this, LoginActivity::class.java)
-            intent.putExtra("USERNAME", NameInput)
+            intent.putExtra("USERNAME", username)
             intent.putExtra("EMAIL", email)
             intent.putExtra("PASSWORD", password)
             startActivity(intent)
